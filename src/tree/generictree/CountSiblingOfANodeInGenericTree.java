@@ -7,42 +7,45 @@ import tree.util.Tree;
 import tree.util.TreeFactory;
 import tree.util.TreeUtil;
 
-public class CountChildOfNodeinGenericTree {
+public class CountSiblingOfANodeInGenericTree {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
 		// Normal Generic Tree
 		Tree root = TreeFactory.createNormalGenericTree();
-		System.out.println(countChild(root, 1));
-		System.out.println(countChild(root, 2));
-		System.out.println(countChild(root, 3));
-		System.out.println(countChild(root, 6));
+		System.out.println(countSiblings(root, 1));
+
+		System.out.println(countSiblings(root, 2));
+		System.out.println(countSiblings(root, 5));
+		System.out.println(countSiblings(root, 7));
 
 		// Node which is not there in the node
 		System.out.println("Node which is not there in the node : "
-				+ countChild(root, 16));
+				+ countSiblings(root, 16));
 
 		// null tree
-		System.out.println(" Null Tree : " + countChild(null, 16));
+		System.out.println(" Null Tree : " + countSiblings(null, 16));
 
 		// Single element generic tree
 		root = TreeFactory.createSingleElementGenericTree();
 		System.out.println(" Single element generic tree : "
-				+ countChild(root, 1));
+				+ countSiblings(root, 1));
 
 		// No sibling tree
 		root = TreeFactory.createNoSiblingGenericTree();
-		System.out.println("No Sibling tree :  "+countChild(root, 1));
+		System.out.println("No Sibling tree :  " + countSiblings(root, 1));
 
 		// No child tree
 		root = TreeFactory.createNoChildGenericTree();
-		System.out.println(" No child tree " + countChild(root, 2));
+		System.out.println(" No child tree " + countSiblings(root, 2));
 
 	}
 
-	private static int countChild(Tree root, int data) {
+	private static int countSiblings(Tree root, int data) {
+
+		Tree node = TreeUtil.findRootOfNode(root, data);
 		int childCount = 0;
-		Tree node = TreeUtil.findNodeInTree(root, data);
 		if (node != null) {
 			Tree firstChild = node.getLeft();
 
@@ -52,7 +55,7 @@ public class CountChildOfNodeinGenericTree {
 			}
 		}
 
-		return childCount;
+		return childCount == 0 ? 0 : childCount - 1;
 	}
 
 }
