@@ -6,5 +6,8 @@ public class CountChildOfNodeinGenericTree {
 		// TODO Auto-generated method stub
 
 	}
+	private int countChild() {
+		return 0;
+	}
 
 }
