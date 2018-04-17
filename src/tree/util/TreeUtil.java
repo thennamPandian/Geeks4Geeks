@@ -94,41 +94,69 @@ public class TreeUtil {
 				temp = nonNullSibHead;
 			else
 				temp = temp.getRight();
-			
+
 			i++;
 		}
 
 		return root;
 	}
-	
+
 	public static Tree findNodeInTree(Tree root, int data) {
-		
-		if(root == null ) return null;
-		
-		if( root.getData() == data ) return root;
-		
+
+		if (root == null)
+			return null;
+
+		if (root.getData() == data)
+			return root;
+
 		Tree node = findNodeInTree(root.getLeft(), data);
-		
-		if(node == null )
-			node = findNodeInTree(root.getRight(), data);		
+
+		if (node == null)
+			node = findNodeInTree(root.getRight(), data);
 		return node;
 	}
-	
+
 	public static Tree findRootOfNode(Tree root, int data) {
-		
-		if(root == null) return null;
-		
-		if(root.getLeft() == null && root.getRight() == null) return null;
-		
-		if( root.getLeft()  != null && root.getLeft().getData() == data || 
-			root.getRight() != null && root.getRight().getData() == data ) return root;
-		
+
+		if (root == null)
+			return null;
+
+		if (root.getLeft() == null && root.getRight() == null)
+			return null;
+
+		if (root.getLeft() != null && root.getLeft().getData() == data
+				|| root.getRight() != null && root.getRight().getData() == data)
+			return root;
+
 		Tree node = findRootOfNode(root.getLeft(), data);
-		
-		if(node == null )
-			node = findRootOfNode(root.getRight(), data);		
-		return node;	
+
+		if (node == null)
+			node = findRootOfNode(root.getRight(), data);
+		return node;
 	}
 
-}
+	public static int countNodes(Tree root, int data) {
 
+		return countNodes(root, data, 0);
+	}
+
+	private static int countNodes(Tree root, int data, int count) {
+		if (root == null)
+			return 0;
+
+		if (root.getData() == data)
+			return count;
+
+		int temp = countNodes(root.getLeft(), data, count+1);
+		if (temp != 0) {
+			return temp;
+		} else {
+			temp = countNodes(root.getRight(), data, count+1);
+			if (temp != 0) {
+				return temp;
+			}
+		}
+
+		return 0;
+	}
+}

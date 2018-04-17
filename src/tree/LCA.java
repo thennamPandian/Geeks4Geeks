@@ -11,32 +11,40 @@ public class LCA {
 		Tree root = TreeUtil.createTree(values);
 		Tree lca = lca(root, 4, 7);
 		System.out.println(lca != null ? lca.getData() : "Not present");
+		
+		System.out.println(" Distance between 4 and 7  : " + DistanceBetween2Nodes.distance(lca, 4, 7));
 
 		// lca in left sub tree
 		lca = lca(root, 4, 5);
 		System.out.println(lca != null ? lca.getData() : "Not present");
+		System.out.println(" Distance between 4 and 5  : " + DistanceBetween2Nodes.distance(lca, 4, 5));
 
 		// lca in right sub tree
 		lca = lca(root, 6, 7);
 		System.out.println(lca != null ? lca.getData() : "Not present");
+		System.out.println(" Distance between 6 and 7  : " + DistanceBetween2Nodes.distance(lca, 6, 7));
 
 		// lca is not there
 		lca = lca(root, 4, 17);
 		System.out.println(lca != null ? lca.getData() : "Not present");
+		System.out.println(" Distance between 4 and 17  : " + DistanceBetween2Nodes.distance(lca, 4, 17));
 
 		// parent is lca
 		lca = lca(root, 4, 1);
 		System.out.println(lca != null ? lca.getData() : "Not present");
+		System.out.println(" Distance between 4 and 1  : " + DistanceBetween2Nodes.distance(lca, 4, 1));
 
 		// null tree
 		lca = lca(null, 4, 17);
 		System.out.println(lca != null ? lca.getData() : "Not present");
+		System.out.println(" Distance between 4 and 17  : " + DistanceBetween2Nodes.distance(lca, 4, 17));
 
 		// Single Element
 		values = new String[] { "1" };
 		root = TreeUtil.createTree(values);
 		lca = lca(root, 4, 17);
 		System.out.println(lca != null ? lca.getData() : "Not present");
+		System.out.println(" Distance between 4 and 17  : " + DistanceBetween2Nodes.distance(lca, 4, 17));
 
 		// left skews
 		System.out.println("\n");
@@ -44,6 +52,7 @@ public class LCA {
 		root = TreeUtil.createTree(values);
 		lca = lca(root, 30, 20);
 		System.out.println(lca != null ? lca.getData() : "Not present");
+		System.out.println(" Distance between 30 and 20  : " + DistanceBetween2Nodes.distance(lca, 30, 20));
 
 		// Right skews
 		System.out.println("\n");
@@ -51,20 +60,7 @@ public class LCA {
 		root = TreeUtil.createTree(values);
 		lca = lca(root, 170, 180);
 		System.out.println(lca != null ? lca.getData() : "Not present");
-
-		// tree with duplicate node in left sub tree
-		values = new String[] { "1", "14", "3", "4", "7", "4", "17" };
-		root = TreeUtil.createTree(values);
-		lca = lca(root, 4, 7);
-		System.out.println(" duplicate ==> " + lca != null ? lca.getData()
-				: "Not present");
-
-		// tree with duplicate node in right sub tree
-		values = new String[] { "1", "4", "3", "4", "17", "4", "7" };
-		root = TreeUtil.createTree(values);
-		lca = lca(root, 4, 7);
-		System.out.println(lca != null ? lca.getData() : "Not present");
-
+		System.out.println(" Distance between 170 and 180  : " + DistanceBetween2Nodes.distance(lca, 170, 180));
 	}
 
 	public static Tree lca(Tree root, int n1, int n2) {
