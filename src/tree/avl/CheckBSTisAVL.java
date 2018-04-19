@@ -62,7 +62,7 @@ public class CheckBSTisAVL {
 		return isAVL && isHBT(root);
 	}
 
-	private static boolean isHBT(Tree root) {
+	public static boolean isHBT(Tree root) {
 		if (root == null)
 			return true;
 		int lstHeight = HeightOftheTree.height(root.getLeft());
