@@ -49,8 +49,8 @@ public class HeapUtil {
 	public static void printHeap(Heap heap) {
 		if (heap == null)
 			return;
-		for (int data : heap.getElements()) {
-			System.out.print(data + " , ");
+		for (int i = 0; i < heap.getCount(); i++) {
+			System.out.print(heap.getElements()[i] + " , ");
 		}
 	}
 
@@ -67,24 +67,34 @@ public class HeapUtil {
 		if (l > heap.getCount() - 1)
 			return;
 		if (r > heap.getCount() - 1)
-			return;
+			r = -1;
 
 		int[] elements = heap.getElements();
 
 		int cur = elements[i];
 		int next = -1;
-
-		int maxChild = elements[l] > elements[r] ? elements[l] : elements[r];
-
+		
+		int maxChild = cur;
+		
+		if( maxChild < elements[l]){
+			maxChild = elements[l];
+			next = l;
+		}
+		
+		if(r != -1 && maxChild < elements[r] ) {
+			maxChild = elements[r];
+			next = r;
+		}
+		
+		
 		if (cur < maxChild) {
 			elements[i] = maxChild;
 
 			if (elements[l] == maxChild) {
 				elements[l] = cur;
-				next = l;
+				
 			} else {
 				elements[r] = cur;
-				next = r;
 			}
 
 			// heap.setElements(elements);
