@@ -4,8 +4,18 @@ public class HeapUtil {
 
 	public static Heap createHeap(int capacity, int[] elements) {
 		Heap heap = new Heap(capacity);
-		heap.setCount(capacity);
-		heap.setElements(elements);
+		if (elements != null) {
+			heap.setCount(elements.length);
+			
+			int size = capacity;
+			int[] values = new int[size];
+			for (int i = 0; i < elements.length; i++) {
+				values[i] = elements[i];
+			}
+			heap.setElements(values);
+		}
+		else
+			heap.setCount(0);			
 		return heap;
 	}
 
@@ -73,26 +83,25 @@ public class HeapUtil {
 
 		int cur = elements[i];
 		int next = -1;
-		
+
 		int maxChild = cur;
-		
-		if( maxChild < elements[l]){
+
+		if (maxChild < elements[l]) {
 			maxChild = elements[l];
 			next = l;
 		}
-		
-		if(r != -1 && maxChild < elements[r] ) {
+
+		if (r != -1 && maxChild < elements[r]) {
 			maxChild = elements[r];
 			next = r;
 		}
-		
-		
+
 		if (cur < maxChild) {
 			elements[i] = maxChild;
 
 			if (elements[l] == maxChild) {
 				elements[l] = cur;
-				
+
 			} else {
 				elements[r] = cur;
 			}
