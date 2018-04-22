@@ -14,6 +14,9 @@ public class RopeUsingSorting {
 		
 		elements = new int[] { 4, 1, 2, 1};
 		System.out.println("\n Min Cost : " + getMinCost(elements));
+		
+		elements = new int[] { 4, 1};
+		System.out.println("\n Min Cost : " + getMinCost(elements));
 
 	}
 
@@ -26,7 +29,7 @@ public class RopeUsingSorting {
 		int sum = 0;
 		int minCost = sum;
 
-		if (elements.length > 2) {
+		if (elements.length >= 2) {
 			sum = elements[0]+elements[1];
 			minCost += sum;
 			
