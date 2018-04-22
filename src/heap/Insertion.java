@@ -59,10 +59,11 @@ public class Insertion {
 		if (heap.getCount() == heap.getCapacity()) {
 			int size = heap.getCount() * 2;
 			int[] elements = new int[size];
-			for (int i = 0; i < heap.getElements().length; i++) {
+			int i = 0;
+			for (; i < heap.getElements().length; i++) {
 				elements[i] = heap.getElements()[i];
 			}
-			heap.setCount(heap.getCount());
+			heap.setCount(i);
 			heap.setCapacity(size);
 			heap.setElements(elements);
 		}
