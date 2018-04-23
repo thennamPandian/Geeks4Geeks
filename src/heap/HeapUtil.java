@@ -6,16 +6,15 @@ public class HeapUtil {
 		Heap heap = new Heap(capacity);
 		if (elements != null) {
 			heap.setCount(elements.length);
-			
+
 			int size = capacity;
 			int[] values = new int[size];
 			for (int i = 0; i < elements.length; i++) {
 				values[i] = elements[i];
 			}
 			heap.setElements(values);
-		}
-		else
-			heap.setCount(0);			
+		} else
+			heap.setCount(0);
 		return heap;
 	}
 
@@ -62,6 +61,21 @@ public class HeapUtil {
 		for (int i = 0; i < heap.getCount(); i++) {
 			System.out.print(heap.getElements()[i] + " , ");
 		}
+	}
+
+	public static int findPositionOfElement(Heap heap, int data) {
+		int pos = -1;
+		if (heap == null)
+			return pos;
+
+		for (int i = 0; i < heap.getCount(); i++) {
+			if (heap.getElements()[i] == data) {
+				pos = i;
+				break;
+			}
+		}
+
+		return pos;
 	}
 
 	public static void heapify(Heap heap, int i) {
