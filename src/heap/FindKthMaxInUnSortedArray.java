@@ -22,7 +22,7 @@ public class FindKthMaxInUnSortedArray {
 		for (int i = 1; i <= elements.length; i++) {
 			System.out.println("\n KthMax : " + getKthMax(elements, i));
 		}
-
+		System.out.println("\n KthMax : " + getKthMax(elements, 22));
 	}
 
 	public static int getKthMax(int[] elements, int k) {
