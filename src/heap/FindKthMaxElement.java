@@ -44,7 +44,7 @@ public class FindKthMaxElement {
 
 	public static int findKthMax(Heap heap, int k) {
 		int kthMax = -1;
-		if (heap == null)
+		if (heap == null || k <= 0)
 			return kthMax;
 
 		int[] elements = heap.getElements();
