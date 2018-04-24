@@ -3,7 +3,9 @@ package stack;
 public class StackOptTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] data = new int[0]; 
+		System.out.println("Array length : " + data.length);
+		
 		Stack stack = new Stack();
 		System.out.println(stack.isEmpty());
 		System.out.println(stack.isFulll());
