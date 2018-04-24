@@ -30,7 +30,12 @@ public class SnapProblem {
 
 		// Unsorted array
 		System.out.println("\n");
-		elements = new int[] { 6,3,4,5,2};
+		elements = new int[] { 6, 3, 4, 5, 2 };
+		display(snap(elements));
+
+		// Highest span is coming in the middle
+		System.out.println("\n");
+		elements = new int[] { 10, 8, 9, 11, 8, 6, 7 };
 		display(snap(elements));
 	}
 
