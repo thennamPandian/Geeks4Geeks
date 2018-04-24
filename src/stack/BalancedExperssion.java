@@ -17,14 +17,20 @@ public class BalancedExperssion {
 		// Simple
 		System.out.println("isBalanced : " + isBalanced("(a+b)"));
 
-		// Complex 
+		// Complex
 		System.out.println("isBalanced : " + isBalanced("(A+B)+(C-D)"));
 
 		// Complex with [, {
 		System.out.println("isBalanced : " + isBalanced("[ {(A+B)}+{(C-D)}]"));
-		
-		//Not Balanced
+
+		// Not Balanced
 		System.out.println("isBalanced : " + isBalanced("[ {(A+B)}+(C-D)}]"));
+
+		// Not Balanced, only opening
+		System.out.println("isBalanced : " + isBalanced("[ "));
+
+		// Balanced
+		System.out.println("isBalanced : " + isBalanced("[ ]"));
 
 	}
 
@@ -56,6 +62,6 @@ public class BalancedExperssion {
 			i++;
 		}
 
-		return true;
+		return stack.isEmpty();
 	}
 }
