@@ -43,6 +43,12 @@ public class MinOfMaxHeap {
 		heap = BuildHeap.buildHeap(null, elements);
 		HeapUtil.printHeap(heap);
 		System.out.print("\n min : " + getMin(heap));
+		
+		System.out.println("\n");
+		elements = new int[] { 15, 10, 2, 6, 8 };
+		heap = BuildHeap.buildHeap(null, elements);
+		HeapUtil.printHeap(heap);
+		System.out.print("\n min : " + getMin(heap));
 	}
 
 	public static int getMin(Heap heap) {
