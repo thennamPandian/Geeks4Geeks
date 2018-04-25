@@ -54,6 +54,12 @@ public class HeapUtil {
 			return -1;
 		return heap.getCount() > 0 ? 0 : -1;
 	}
+	
+	public static int min(Heap heap) {
+		if (heap == null)
+			return -1;
+		return heap.getCount() > 0 ? 0 : -1;
+	}
 
 	public static void printHeap(Heap heap) {
 		if (heap == null)
@@ -123,5 +129,102 @@ public class HeapUtil {
 			// heap.setElements(elements);
 			heapify(heap, next);
 		}
+	}
+	
+	public static void heapifyMinHeap(Heap heap, int i) {
+		if (heap == null)
+			return;
+
+		if (i < 0 || i > heap.getCount() - 1)
+			return;
+
+		int l = (2 * i) + 1;
+		int r = (2 * i) + 2;
+
+		if (l > heap.getCount() - 1)
+			return;
+		if (r > heap.getCount() - 1)
+			r = -1;
+
+		int[] elements = heap.getElements();
+
+		int cur = elements[i];
+		int next = -1;
+
+		int minChild = cur;
+
+		if (minChild > elements[l]) {
+			minChild = elements[l];
+			next = l;
+		}
+
+		if (r != -1 && minChild > elements[r]) {
+			minChild = elements[r];
+			next = r;
+		}
+
+		if (cur > minChild) {
+			elements[i] = minChild;
+
+			if (elements[l] == minChild) {
+				elements[l] = cur;
+
+			} else {
+				elements[r] = cur;
+			}
+
+			heapifyMinHeap(heap, next);
+		}
+	}
+	
+	public static void deleteElement(Heap heap, int data) {
+		int index = findPositionOfElement(heap, data);
+		
+		if(index != -1) {
+			int[] elements = heap.getElements();
+			int lastElement = elements[ heap.getCount()-1];
+			elements[index] = lastElement;
+			heap.setCount(heap.getCount()-1);
+			heapify(heap, index);
+					
+		}
+	}
+	
+	public static Heap insertIntoMinHeap(Heap heap, int data) {
+
+		// if the heap is empty
+		if (heap == null) {
+			heap = HeapUtil.createHeap(new int[] { data });
+			return heap;
+		}
+
+		// if it is full
+		if (heap.getCount() == heap.getCapacity()) {
+			int size = heap.getCount() * 2;
+			int[] elements = new int[size];
+			int i = 0;
+			for (; i < heap.getElements().length; i++) {
+				elements[i] = heap.getElements()[i];
+			}
+			heap.setCount(i);
+			heap.setCapacity(size);
+			heap.setElements(elements);
+		}
+
+		int childIndex = heap.getCount();
+		heap.setCount(heap.getCount() + 1);
+		int[] elements = heap.getElements();
+		int parentIndex = (childIndex - 1) / 2;
+		elements[childIndex] = data;
+
+		while (parentIndex >= 0
+				&& (elements[parentIndex] > elements[childIndex])) {
+			elements[childIndex] = elements[parentIndex];
+			elements[parentIndex] = data;
+			childIndex = parentIndex;
+			parentIndex = (childIndex - 1) / 2;
+		}
+
+		return heap;
 	}
 }
