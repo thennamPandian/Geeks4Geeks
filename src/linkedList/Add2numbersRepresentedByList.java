@@ -15,7 +15,7 @@ public class Add2numbersRepresentedByList {
 		Node headA = ListUtil.createList(values);
 		values = new int[]{8,4,2};
 		Node headB = ListUtil.createList(values);
-		/*	System.out.println("\n Given IP : ");
+			System.out.println("\n Given IP : ");
 		ListUtil.displayList(headA);
 		ListUtil.displayList(headB);
 		System.out.println("\n sum ");
@@ -70,7 +70,7 @@ public class Add2numbersRepresentedByList {
 		ListUtil.displayList(headA);
 		ListUtil.displayList(headB);
 		System.out.println("\n sum ");
-		ListUtil.displayList(addTwoLists(headA, headB));*/
+		ListUtil.displayList(addTwoLists(headA, headB));
 		
 		values = new int[] {7,7,5,3,5,6,2,9,1,2,7,0,9,3,6,0,6,2,6,1,8,7,9,2,0,2,3,7,5,9,2,2,8,9,7,3,6,1,2,9,3,1,9,4,7,8,4,5,0,3,6,1,0,6,3,2,0,6,1,5,5,4,7,6,5,6,9,3,7,4,5,2,5,4,7,4,4,3,0,7,8,6,8,8};
 		headA = ListUtil.createList(values);
